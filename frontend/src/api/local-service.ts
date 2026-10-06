@@ -40,6 +40,14 @@ export function runAction(key: string, id: number, action: string): ActionResult
     return { ok: false, message: `没有找到编号为 ${id} 的${meta.entity}` }
   }
   const current = String(rows[index].status)
+  // 防雷检测联动生成的保养待办只能回「廊内防雷接地检测」台账登记复测结论后闭环，
+  // 不能在本页直接流转，否则台账与待办清单两边条数会对不上。
+  if (rows[index]['来源检测点']) {
+    return {
+      ok: false,
+      message: '该条待办由廊内防雷接地检测联动生成，请到「廊内防雷接地检测」台账登记复测结论，两边同步更新',
+    }
+  }
   if (current === target) {
     return { ok: false, message: `${meta.entity}已经是「${target}」，不用重复操作` }
   }

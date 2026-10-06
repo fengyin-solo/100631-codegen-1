@@ -17,6 +17,7 @@ const Hazard = () => import('@/views/hazard/index.vue')
 const Emergency = () => import('@/views/emergency/index.vue')
 const Energy = () => import('@/views/energy/index.vue')
 const Device = () => import('@/views/device/index.vue')
+const Lightning = () => import('@/views/lightning/index.vue')
 const Entryapprove = () => import('@/views/entryapprove/index.vue')
 const Duty = () => import('@/views/duty/index.vue')
 
@@ -40,6 +41,7 @@ const router = createRouter({
     { path: '/emergency', name: 'emergency', component: Emergency },
     { path: '/energy', name: 'energy', component: Energy },
     { path: '/device', name: 'device', component: Device },
+    { path: '/lightning', name: 'lightning', component: Lightning },
     { path: '/entryapprove', name: 'entryapprove', component: Entryapprove },
     { path: '/duty', name: 'duty', component: Duty },
   ],
